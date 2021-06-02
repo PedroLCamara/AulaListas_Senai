@@ -27,31 +27,26 @@ namespace AulaListas
                 Passiva----{p.passiva}
                 Ativas----{p.ativa}");
             }
-            
-            armaduras.RemoveAt(3);
-            armaduras.RemoveAll(armadura => armadura.raridade == 3);
 
             Console.WriteLine();
             Console.WriteLine("==========================================");
 
-            List <armadura> atualizarArmaduras = new List<armadura>();
-            armadura c = new armadura("Peitoral dracônico", 5, 100, "Habilidade de voo", "Atirar bolas de fogo");
-            atualizarArmaduras.Add(c);
-            armaduras.Add(new armadura("Sapatos do clérigo", 5, 100, "Cura de 1% da vida perdida por segundo", "Cura de 50% da vida máxima"));
+            armadura trocar = armaduras.Find(armadura => armadura.nome == "Peitoral bárbaro");
+            trocar.passiva= "Mais 15% de força, menos 25% de mobilidade";
+            trocar.ativa= "Aumenta a força em 40% por troca de vida";
 
-            armaduras.Insert(1, atualizarArmaduras.Find(armadura => armadura.nome == "Peitoral dracônico"));
+            armaduras.RemoveAt(1);
+            armaduras.Insert(1, trocar);
 
-            armaduras.Add(atualizarArmaduras.Find(armadura => armadura.nome == "Sapatos do clérigo"));
-
-            foreach (armadura x in armaduras)
+            foreach (armadura p in armaduras)
             {
                 Console.WriteLine();
                 Console.WriteLine($@"
-                Nome----{x.nome}
-                Raridade----{x.raridade}
-                Level----{x.level}
-                Passiva----{x.passiva}
-                Ativas----{x.ativa}");
+                Nome----{p.nome}
+                Raridade----{p.raridade}
+                Level----{p.level}
+                Passiva----{p.passiva}
+                Ativas----{p.ativa}");
             }
         }
     }
